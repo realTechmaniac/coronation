@@ -104,7 +104,7 @@
 
         let uslTicker = document.getElementById('uslTicker');
 
-        fetch('https://cors-anywhere.herokuapp.com/https://marketdataapiv3.nse.com.ng/v3/api/price/pricesDL.json?_t=7a77da73-89e1-4de3-8494-625d9d2eea8a')
+        fetch('https://marketdataapiv3.ngxgroup.com/v3/api/price/pricesEOD.json?_t=7a77da73-89e1-4de3-8494-625d9d2eea8a')
         .then(resp => resp.json())
         .then((resp)=> {
             resp.sort(function(a, b) {
