@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+
+    <script src=""></script>
+
+</head>
+<body>
+    
+    <div class="container body-content">
+        
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    
+    <style>
+        html,body{
+            
+        }
+        .nse-display {
+           
+        }
+
+        .nse-ticker {
+        }
+
+        .nse-ticker {
+            list-style-type: none;
+            display: inline-block;
+            white-space: nowrap;
+            font-size: small;
+            color:white!important ;
+            font-family: 'Nunito', sans-serif;
+            margin-top: 20px;
+            
+        }
+
+            .nse-ticker > li {
+                display: inline-block;
+                padding-left: 20px;
+                white-space: nowrap;
+                padding-right: 15px;
+            }
+
+        .nse-brand {
+        font-size: small;
+        }
+
+        .nse-asset {
+        font-size: small;
+        }
+        .nse-up {
+            /* color: transparent */
+        }
+
+        .open{
+            color:rgb(43, 187, 43);
+            padding-left: 3px;
+        }
+
+        .close{
+            color:rgb(248, 8, 8);
+            padding-left: 3px;
+        }
+
+        
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   
+
+    </script>
+</head>
+<body class="nse-display" style="background-color: transparent !important;">
+    <marquee direction="left" scrolldelay="70">
+        <ul class="nse-ticker" id = "uslTicker">
+                <li>
+                    <span class="nse-brand">The Nigerian Stock Exchange </span>
+                </li>
+                <li>
+                        <span class="nse-asset">EQUITIES: </span>
+                </li>
+        </ul>
+    </marquee>
+
+    
+
+    <script>
+
+        let uslTicker = document.getElementById('uslTicker');
+
+        fetch('https://cors-anywhere.herokuapp.com/https://marketdataapiv3.nse.com.ng/v3/api/price/pricesDL.json?_t=7a77da73-89e1-4de3-8494-625d9d2eea8a')
+        .then(resp => resp.json())
+        .then((resp)=> {
+            resp.sort(function(a, b) {
+            return a.Symbol.localeCompare(b.Symbol);
+            })
+            .map(data  => {
+            const ticker = `<li>
+            <span class="symbol">${data.Symbol}</span>
+            <span><span class="open">Open</span>  ${data.Open === null ? "n/a": `<span> &#x20A6; ${data.Open} </span>`}</span>
+            <span><span class="close">Close</span> ${data.Close === null ? "n/a": `<span> &#x20A6; ${data.Close} </span>`}</span>
+            </li>`;
+            uslTicker.innerHTML += ticker;
+    
+        })
+        }
+        )
+        .catch(err => console.log(err));
+
+    </script>
+    
+</body>
+
+</html>
+
+
+        
+    </div>
+
+    
+
+    
+</body>
+</html>
